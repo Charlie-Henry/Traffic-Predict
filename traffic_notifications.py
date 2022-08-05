@@ -19,6 +19,7 @@ ARMA_PARAMS = (0,1,2)
 SEASONAL_PARAMS = (0,2,2,7)
 
 def clean_data(df):
+	df = df[df.index < date.strftime(date.today(),format="%Y-%m-%d")]
 	df.index = pd.DatetimeIndex(df.index)
 	all_days = pd.date_range(df.index.min(), df.index.max(), freq='D')
 	df = df.reindex(all_days)
